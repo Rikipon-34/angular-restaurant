@@ -1,0 +1,38 @@
+h1 {
+  text-align: center;
+  padding: 10px;
+  font-size: 50px;
+  font-family: "Amatic SC", sans-serif;
+  color: white;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.topnav button {
+  float: right;
+  color: white;
+  background-color: #333;
+  text-align: center;
+  padding: 55px 15px;
+  height: 100%;
+  text-decoration: none;
+  font-size: 30px;
+  font-family: "Amatic SC", sans-serif;
+  box-sizing: border-box;
+}
+
+.topnav button:hover {
+  cursor: pointer;
+  background-color: #ddd;
+  color: black;
+}
+
+body {
+  margin: 0;
+}
