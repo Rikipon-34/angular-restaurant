@@ -25,14 +25,19 @@ h1 {
   font-size: 30px;
   font-family: "Amatic SC", sans-serif;
   box-sizing: border-box;
+  transition: 0.3s;
 }
 
 .topnav button:hover {
   cursor: pointer;
-  background-color: #ddd;
-  color: black;
+  background-color: black;
+  color: #f96d00;
 }
 
 body {
   margin: 0;
+  background-image: url("https://img3.stockfresh.com/files/s/sanjanovakovic/m/57/3046837_stock-photo-vector-seamless-pattern-background-with-hand-drawn-food-drink-and-restaurant-menu-elements-on-black.jpg");
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  overflow: hidden;
 }

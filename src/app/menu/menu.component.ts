@@ -13,6 +13,6 @@ export class MenuComponent implements OnInit {
   ngOnInit(): void {}
 
   logoutAndGoBack(): void {
-    this.router.navigate(['/login']); // Navigate to the root route
+    this.router.navigate(['/login']);
   }
 }
