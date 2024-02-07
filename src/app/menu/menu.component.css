@@ -1,3 +1,7 @@
+html {
+  margin: 0;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -6,7 +10,6 @@ body {
   background-image: url("https://img3.stockfresh.com/files/s/sanjanovakovic/m/57/3046837_stock-photo-vector-seamless-pattern-background-with-hand-drawn-food-drink-and-restaurant-menu-elements-on-black.jpg");
   background-color: rgba(0, 0, 0, 0.5);
   width: 100%;
-  overflow: hidden;
 }
 
 nav {
@@ -35,19 +38,19 @@ h1 {
 
 button {
   cursor: pointer;
-  font-size: 20px;
-  background-color: #333;
-  color: white;
-  padding: 10px 20px;
   border: 2px solid #333;
-  border-radius: 10px;
+  background-size: cover;
+  border-radius: 20px;
   transition: 0.3s;
+  width: 90px;
+  height: 90px;
   margin-right: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  background-image: url("https://cdn2.iconfinder.com/data/icons/perfect-pixel-game-ui-set/256/quit_exit-512.png");
 }
 
 button:hover {
-  background-color: rgba(0, 0, 0, 0.5);
-  color: #f96d00;
+  background-color: #f96d00;
 }
 
 p {
