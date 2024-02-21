@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Logout Button</title>
+    <title>Menu</title>
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Amatic+SC"
@@ -13,26 +13,78 @@
     <div class="big">
       <nav>
         <div class="container">
-          <h1>Consulta il menu</h1>
+          <h1>Menu</h1>
           <button (click)="logoutAndGoBack()"></button>
         </div>
       </nav>
-      <h2>Prezzi</h2>
-      <div class="antipasti">
+
+      <div class="piatti">
+        <h2>Prezzi</h2>
         <h1>Antipasti</h1>
+        <ul>
+          <ng-container *ngFor="let item of allMenuItems">
+            <li class="menu-item" *ngIf="item.categoria === 'antipasto'">
+              <span class="menu-item-nome">{{ item.nome }}:</span>
+              <span class="menu-item-prezzo">{{ item.prezzo }} &euro;</span>
+              <span class="menu-item-ingredienti"
+                ><br />
+                ({{ item.ingredienti.join(", ") }})</span
+              >
+            </li>
+          </ng-container>
+        </ul>
       </div>
       <div class="divider"></div>
+
       <div class="piatti">
+        <h2>Prezzi</h2>
         <h1>Primi</h1>
+        <ul>
+          <ng-container *ngFor="let item of allMenuItems">
+            <li class="menu-item" *ngIf="item.categoria === 'primo'">
+              <span class="menu-item-nome">{{ item.nome }}:</span>
+              <span class="menu-item-prezzo">{{ item.prezzo }} &euro;</span>
+              <span class="menu-item-ingredienti"
+                ><br />
+                ({{ item.ingredienti.join(", ") }})</span
+              >
+            </li>
+          </ng-container>
+        </ul>
       </div>
       <div class="divider"></div>
+
       <div class="piatti">
+        <h2>Prezzi</h2>
         <h1>Secondi</h1>
+        <ul>
+          <ng-container *ngFor="let item of allMenuItems">
+            <li class="menu-item" *ngIf="item.categoria === 'secondo'">
+              <span class="menu-item-nome">{{ item.nome }}:</span>
+              <span class="menu-item-prezzo">{{ item.prezzo }} &euro;</span>
+              <span class="menu-item-ingredienti"
+                ><br />
+                ({{ item.ingredienti.join(", ") }})</span
+              >
+            </li>
+          </ng-container>
+        </ul>
       </div>
       <div class="divider"></div>
+
       <div class="piatti">
+        <h2>Prezzi</h2>
         <h1>Bevande</h1>
+        <ul>
+          <ng-container *ngFor="let item of allMenuItems">
+            <li class="menu-item" *ngIf="item.categoria === 'bevande'">
+              <span class="menu-item-nome">{{ item.nome }}</span>
+              <span class="menu-item-prezzo">{{ item.prezzo }} &euro;</span>
+            </li>
+          </ng-container>
+        </ul>
       </div>
+      <div class="divider"></div>
     </div>
   </body>
 </html>

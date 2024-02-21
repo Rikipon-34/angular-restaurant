@@ -82,11 +82,37 @@ h2 {
   margin: 0;
   padding: 10px 20px;
   float: right;
-  margin-right: 10px;
 }
 
 .antipasti {
   margin-bottom: 50px;
   padding: 10px;
   margin-top: 60px;
+}
+.menu-item {
+  font-size: 40px;
+  font-family: "Amatic SC", sans-serif;
+  color: #f96d00;
+  padding: 5px;
+  background-color: rgba(0, 0, 0, 0.7);
+  margin-bottom: 10px;
+}
+
+.menu-item span {
+  font-weight: bold;
+}
+
+.menu-item:hover {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+.menu-item-nome {
+  margin-right: 10px;
+}
+
+.menu-item-prezzo {
+  float: right;
+}
+.menu-item-ingredienti {
+  text-align: center;
+  margin-left: 30px;
 }
