@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { map } from 'rxjs/operators';
 import { Menu } from '../model/menu';
 
 @Component({
@@ -42,7 +41,6 @@ export class MenuComponent implements OnInit {
       });
   }
   groupMenuItemsByCategory(): void {
-    // Resetta gli array di categorie
     this.categorizedMenuItems = {
       primo: [],
       secondo: [],

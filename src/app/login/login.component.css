@@ -11,21 +11,22 @@ h1 {
   background-color: #333;
   margin: 0;
   padding: 0;
-  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 130px;
 }
 
 .topnav button {
-  float: right;
   color: white;
   background-color: #333;
   text-align: center;
-  padding: 55px 15px;
-  height: 100%;
   text-decoration: none;
   font-size: 30px;
   font-family: "Amatic SC", sans-serif;
-  box-sizing: border-box;
   transition: 0.3s;
+  cursor: pointer;
+  height: 100%;
 }
 
 .topnav button:hover {

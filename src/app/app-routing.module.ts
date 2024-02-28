@@ -3,12 +3,14 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { MenuComponent } from './menu/menu.component';
 import { LoginComponent } from './login/login.component';
-import { AppComponent } from './app.component';
+import { AccessComponent } from './access/access.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
-  { path: '', component: AppComponent },
   { path: 'menu', component: MenuComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'access', component: AccessComponent },
+  { path: 'register', component: RegisterComponent },
 ];
 
 @NgModule({
