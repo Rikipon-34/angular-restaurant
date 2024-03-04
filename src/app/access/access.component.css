@@ -32,7 +32,8 @@ body {
 }
 
 .login-form input[type="text"],
-.login-form input[type="password"] {
+.login-form input[type="password"],
+.login-form input[type="email"] {
   width: 100%;
   padding: 10px;
   margin-bottom: 10px;
@@ -60,4 +61,16 @@ button {
   font-family: "Amatic SC", sans-serif;
   color: #f96d00;
   font-size: 30px;
+}
+.error-message {
+  color: #dc3545;
+  font-size: 14px;
+  margin-top: 5px;
+}
+.success-message {
+  background-color: #dff0d8;
+  color: #3c763d;
+  border: 1px solid #d6e9c6;
+  padding: 10px;
+  margin-bottom: 20px;
 }

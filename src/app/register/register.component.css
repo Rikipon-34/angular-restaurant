@@ -40,7 +40,8 @@ body {
 }
 
 .registration-form input[type="text"],
-.registration-form input[type="password"] {
+.registration-form input[type="password"],
+.registration-form input[type="email"] {
   width: 100%;
   padding: 10px;
   margin-bottom: 10px;
@@ -67,4 +68,8 @@ body {
 button {
   font-family: "Amatic SC", sans-serif;
   font-size: 30px;
+}
+
+.error-message {
+  color: #f96d00;
 }

@@ -14,10 +14,52 @@
       <nav>
         <div class="container">
           <h1>Menu</h1>
-          <button (click)="logoutAndGoBack()"></button>
+
+          <button class="order" (click)="openOrderForm()">
+            Effettua Ordine
+          </button>
+          <button class="logout" (click)="logoutAndGoBack()"></button>
         </div>
       </nav>
-
+      <div *ngIf="showOrderForm" class="order-form">
+        <form>
+          <div class="label-container">
+            <label for="dishName">Nome del Piatto:</label>
+            <select
+              id="dishName"
+              name="dishName"
+              [(ngModel)]="selectedMenuItem"
+              (change)="addToOrder(selectedMenuItem)"
+            >
+              <option *ngFor="let item of allMenuItems" [ngValue]="item">
+                {{ item.nome }}
+              </option>
+            </select>
+          </div>
+          <div>
+            <label for="quantity">Quantità:</label>
+            <input
+              type="number"
+              id="quantity"
+              name="quantity"
+              [(ngModel)]="quantita"
+              min="1"
+            />
+          </div>
+          <div>
+            <label for="totalPrice">Prezzo Totale:</label>
+            <input
+              type="text"
+              id="totalPrice"
+              name="totalPrice"
+              [value]="selectedMenuItem?.prezzo * quantita"
+              disabled
+            />
+          </div>
+          <button type="submit" (click)="submitOrder()">Invia Ordine</button>
+          <button type="button" (click)="closeOrderForm()">Annulla</button>
+        </form>
+      </div>
       <div class="piatti">
         <h2>Prezzi</h2>
         <h1>Antipasti</h1>

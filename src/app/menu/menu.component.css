@@ -36,7 +36,7 @@ h1 {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-button {
+.logout {
   cursor: pointer;
   border: 2px solid #333;
   background-size: cover;
@@ -49,7 +49,7 @@ button {
   background-image: url("https://cdn2.iconfinder.com/data/icons/perfect-pixel-game-ui-set/256/quit_exit-512.png");
 }
 
-button:hover {
+.logout:hover {
   background-color: #f96d00;
 }
 
@@ -115,4 +115,62 @@ h2 {
 .menu-item-ingredienti {
   text-align: center;
   margin-left: 30px;
+}
+.order {
+  cursor: pointer;
+  border: 2px solid #333;
+  background-size: cover;
+  border-radius: 5px;
+  transition: 0.3s;
+  margin-right: 10px;
+  color: #f96d00;
+  font-size: 40px;
+  font-family: "Amatic SC", sans-serif;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.order:hover {
+  background-color: #f96d00;
+  color: black;
+}
+.order-form {
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+button[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+button[type="button"] {
+  background-color: #ccc;
+  color: #000;
+  border: none;
+}
+
+button[type="button"]:hover {
+  background-color: #bfbfbf;
+}
+.label-container {
+  width: 100px;
 }

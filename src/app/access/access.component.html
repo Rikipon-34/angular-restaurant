@@ -13,10 +13,38 @@
   </div>
 
   <div class="login-form">
-    <form>
-      <input type="text" placeholder="Email" required />
-      <input type="password" placeholder="Password" required />
-      <button type="submit" (click)="navigateToLogin()">Prosegui</button>
+    <form [formGroup]="loginForm">
+      <input type="email" placeholder="Email" formControlName="email" />
+      <div
+        *ngIf="isFormSubmitted && loginForm.get('email').errors?.['required']"
+        class="error-message"
+      >
+        Inserisci l'email
+      </div>
+      <div
+        *ngIf="isFormSubmitted && loginForm.get('email').errors?.['email']"
+        class="error-message"
+      >
+        L'email non è valida
+      </div>
+
+      <input
+        type="password"
+        placeholder="Password"
+        formControlName="password"
+      />
+      <div
+        *ngIf="isFormSubmitted && loginForm.get('password').errors?.['required']"
+        class="error-message"
+      >
+        Inserisci la password
+      </div>
+
+      <button type="button" (click)="login()">Accedi</button>
     </form>
+    <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+    <div *ngIf="successMessage" class="success-message">
+      {{ successMessage }}
+    </div>
   </div>
 </body>
