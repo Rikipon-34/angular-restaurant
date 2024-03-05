@@ -14,6 +14,9 @@
       <nav>
         <div class="container">
           <h1>Menu</h1>
+          <button class="order" (click)="toggleOrderSummary()">
+            Mostra Riepilogo Ordini
+          </button>
 
           <button class="order" (click)="openOrderForm()">
             Effettua Ordine
@@ -29,7 +32,7 @@
               id="dishName"
               name="dishName"
               [(ngModel)]="selectedMenuItem"
-              (change)="addToOrder(selectedMenuItem)"
+              (change)="addToOrder(selectedMenuItem, quantita)"
             >
               <option *ngFor="let item of allMenuItems" [ngValue]="item">
                 {{ item.nome }}
@@ -59,6 +62,25 @@
           <button type="submit" (click)="submitOrder()">Invia Ordine</button>
           <button type="button" (click)="closeOrderForm()">Annulla</button>
         </form>
+      </div>
+      <div *ngIf="showOrderSummary" class="order-summary">
+        <h2>Riepilogo Ordini</h2>
+        <ul>
+          <li *ngFor="let order of orders">
+            <div class="order-details">
+              <span>ID: {{ order.id }}</span
+              ><br />
+              <ng-container *ngFor="let nomePiatto of order.nomePiatti">
+                <span
+                  >{{ nomePiatto }} (Quantità:
+                  {{ getQuantityForItem(nomePiatto) }})</span
+                ><br />
+              </ng-container>
+              <span>Prezzo Totale: {{ order.prezzoTotale }}€</span>
+            </div>
+          </li>
+        </ul>
+        <button (click)="resetOrderSummary()">Resetta Riepilogo Ordini</button>
       </div>
       <div class="piatti">
         <h2>Prezzi</h2>

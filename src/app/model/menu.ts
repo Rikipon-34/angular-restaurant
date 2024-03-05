@@ -4,4 +4,5 @@ export class Menu {
   prezzo: number;
   ingredienti: string[];
   id: number;
+  quantita: number;
 }

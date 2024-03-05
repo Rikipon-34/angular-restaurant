@@ -21,7 +21,7 @@ export class MenuComponent implements OnInit {
   selectedMenuItem: Menu;
   showOrderSummary = false;
   id: number;
-  nomePiatto: string = '';
+  nomePiatto: string[] = [];
   quantita: number = 1;
   prezzoTotale: number = 0;
   selectedItems: Menu[] = [];
@@ -84,48 +84,81 @@ export class MenuComponent implements OnInit {
 
   order: Menu[] = [];
 
-  addToOrder(dish: Menu): void {
+  addToOrder(dish: Menu, quantity: number): void {
     const index = this.selectedItems.findIndex((item) => item.id === dish.id);
     if (index === -1) {
+      dish.quantita = quantity;
       this.selectedItems.push(dish);
-      console.log('Piatti selezionati:', this.generateSummary());
+      this.nomePiatto.push(dish.nome);
+      console.log('Piatti selezionati:', this.nomePiatto);
+      this.calculateTotalPrice();
+    } else {
+      this.selectedItems[index].quantita += quantity;
+      console.log(
+        'Quantità aggiornata per',
+        dish.nome,
+        'Nuova quantità:',
+        this.selectedItems[index].quantita
+      );
     }
+  }
+
+  getQuantityForItem(nomePiatto: string): number {
+    const order = this.orders.find((order) =>
+      order.nomePiatti.includes(nomePiatto)
+    );
+
+    if (!order) {
+      return 0;
+    }
+
+    const index = order.nomePiatti.indexOf(nomePiatto);
+    return order.quantita[index];
   }
 
   removeFromOrder(dish: Menu): void {
     const index = this.selectedItems.findIndex((item) => item.id === dish.id);
     if (index !== -1) {
       this.selectedItems.splice(index, 1);
-      console.log('Piatti selezionati:', this.generateSummary());
+      this.nomePiatto.splice(index, 1);
+      console.log('Piatti selezionati:', this.nomePiatto);
+      this.calculateTotalPrice();
     }
+  }
+
+  resetOrderSummary(): void {
+    this.orders = [];
   }
 
   generateSummary(): string {
     let totalPrice = 0;
     const summary = this.selectedItems.map((item) => {
-      const itemTotalPrice = item.prezzo * this.quantita;
+      const itemTotalPrice = item.prezzo * item.quantita;
       totalPrice += itemTotalPrice;
-      return `${item.nome} (Quantità: ${this.quantita}, Prezzo: ${itemTotalPrice}€)`;
+      return `${item.nome} (Quantità: ${item.quantita}, Prezzo: ${itemTotalPrice}€)`;
     });
     return `${summary.join(', ')} - Prezzo Totale: ${totalPrice}€`;
   }
 
   calculateTotalPrice(): void {
     this.prezzoTotale = this.selectedItems.reduce((total, item) => {
-      return total + item.prezzo * this.quantita;
+      return total + item.prezzo * item.quantita;
     }, 0);
   }
 
   submitOrder(): void {
-    if (this.selectedMenuItem && this.quantita > 0) {
-      const orderSummary = this.generateSummary();
-      console.log('Riepilogo ordine:', orderSummary);
-      const totalPrice = this.calculateTotalPrice();
-      console.log('Prezzo totale:', totalPrice);
+    if (this.selectedItems.length > 0) {
+      console.log('Riepilogo ordine:', this.generateSummary());
+      console.log('Prezzo totale:', this.prezzoTotale);
+
+      const totalQuantity = this.selectedItems.reduce(
+        (total, item) => total + item.quantita,
+        0
+      );
 
       const order: Order = {
-        nomePiatto: this.selectedMenuItem.nome,
-        quantita: this.quantita,
+        nomePiatti: this.selectedItems.map((item) => item.nome),
+        quantita: totalQuantity,
         prezzoTotale: this.prezzoTotale,
         id: this.id,
       };
@@ -135,7 +168,7 @@ export class MenuComponent implements OnInit {
         .subscribe(
           (response) => {
             console.log('Ordine inviato con successo:', response);
-
+            this.orders.push(response);
             this.resetOrderForm();
           },
           (error) => {
@@ -143,9 +176,7 @@ export class MenuComponent implements OnInit {
           }
         );
     } else {
-      console.error(
-        "Seleziona un piatto e specifica la quantità prima di inviare l'ordine."
-      );
+      console.error("Seleziona almeno un piatto prima di inviare l'ordine.");
     }
   }
 
@@ -157,10 +188,19 @@ export class MenuComponent implements OnInit {
     this.showOrderForm = false;
     this.resetOrderForm();
   }
+  getQuantitiesForOrder(order: Order): { [key: string]: number } {
+    const quantities: { [key: string]: number } = {};
+    order.nomePiatti.forEach((nomePiatto, index) => {
+      const quantity = order.quantita[index];
+      quantities[nomePiatto] = quantity;
+    });
+
+    return quantities;
+  }
 
   resetOrderForm(): void {
     this.selectedItems = [];
-    this.nomePiatto = '';
+    this.nomePiatto = [];
     this.quantita = 1;
     this.prezzoTotale = 0;
   }

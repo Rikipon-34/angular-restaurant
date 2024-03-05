@@ -1,6 +1,6 @@
 export class Order {
   id: number;
-  nomePiatto: string;
+  nomePiatti: string[];
   quantita: number;
   prezzoTotale: number;
 }

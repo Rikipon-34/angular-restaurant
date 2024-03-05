@@ -1,44 +1,42 @@
-h1 {
-  text-align: center;
-  padding: 10px;
-  font-size: 50px;
-  font-family: "Amatic SC", sans-serif;
-  color: white;
-}
-
-.topnav {
-  overflow: hidden;
-  background-color: #333;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 130px;
-}
-
-.topnav button {
-  color: white;
-  background-color: #333;
-  text-align: center;
-  text-decoration: none;
-  font-size: 30px;
-  font-family: "Amatic SC", sans-serif;
-  transition: 0.3s;
-  cursor: pointer;
-  height: 100%;
-}
-
-.topnav button:hover {
-  cursor: pointer;
-  background-color: black;
-  color: #f96d00;
-}
-
 body {
   margin: 0;
+  padding: 0;
   background-image: url("https://img3.stockfresh.com/files/s/sanjanovakovic/m/57/3046837_stock-photo-vector-seamless-pattern-background-with-hand-drawn-food-drink-and-restaurant-menu-elements-on-black.jpg");
   background-color: rgba(0, 0, 0, 0.7);
   width: 100%;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.topnav {
+  width: 100%;
+  background-color: #333;
+  height: 130px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.topnav h1 {
+  color: #f96d00;
+  text-align: center;
+  font-size: 50px;
+  font-family: "Amatic SC", sans-serif;
+}
+
+.topnav button {
+  color: #f96d00;
+  font-size: 30px;
+  font-family: "Amatic SC", sans-serif;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.topnav button:hover {
+  color: white;
 }
